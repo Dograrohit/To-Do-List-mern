@@ -11,7 +11,7 @@ const Signup = () => {
      let handler = async(e)=>{
       e.preventDefault()
      try{
-      let req = await fetch("/user/signup",
+      let req = await fetch("https://to-do-list-backend-2jt1.onrender.com/user/signup",
         {method:"post",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({username,email,password})}
     )
