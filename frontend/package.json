@@ -23,7 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "https://to-do-list-backend-2jt1.onrender.com",
   "eslintConfig": {
     "extends": [
       "react-app",
