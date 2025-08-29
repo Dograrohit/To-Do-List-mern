@@ -18,7 +18,7 @@ const token = localStorage.getItem("token")
 let submithandler = async(e)=>{
   e.preventDefault()
   try{
-        let req = await fetch(`${url}/Home`,{method:"post",headers:{"Content-type":"application/json"},body:JSON.stringify({text})})
+        let req = await fetch(`${url}/Home`,{method:"post",headers:{"Content-type":"application/json"},credentials: "include",body:JSON.stringify({text})})
  
         if (req.status === 401) {
         localStorage.removeItem("token");
@@ -37,7 +37,7 @@ let submithandler = async(e)=>{
 
 let toggle = async(id,newcheck,idx)=>{
   try{
-  let req = await fetch(`${url}/Home/${id}`,{method:"PUT",headers:{"Content-Type":"application/json", "Authorization": `Bearer ${token}`},
+  let req = await fetch(`${url}/Home/${id}`,{method:"PUT",headers:{"Content-Type":"application/json",credentials: "include", "Authorization": `Bearer ${token}`},
   body:JSON.stringify({id,check:newcheck})
 })
 
@@ -59,7 +59,7 @@ setNote(update)
 
 const fetchData = async () => {
     try {
-      let res = await fetch(`${url}/Home`,{headers:{ "Authorization": `Bearer ${token}`}});
+      let res = await fetch(`${url}/Home`,{headers:{ "Authorization": `Bearer ${token}`},credentials: "include",});
  
       if (res.status === 401) {
         localStorage.removeItem("token");
@@ -80,7 +80,7 @@ const fetchData = async () => {
       try{
         let req = await fetch(`${url}/Home/${id}`, {
       method: "DELETE",
-      headers: { "Content-Type": "application/json","Authorization": `Bearer ${token}` }
+      headers: { "Content-Type": "application/json","Authorization": `Bearer ${token}` },credentials: "include",
     });
 
     if (req.status === 401) {
