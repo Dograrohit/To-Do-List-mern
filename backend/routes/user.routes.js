@@ -44,7 +44,7 @@ router.post('/signup',
 
       res.cookie("token",token)
 
-      res.json(newuser);
+      res.json(newuser,token);
     } catch (err) {
       console.error("Signup error:", err);
       res.status(500).json({ message: "Server error", error: err.message });
@@ -95,6 +95,7 @@ router.post('/Login',
    },process.env.JWT_SECRET)
 
   res.cookie("token",token)
+  res.json(token)
   res.status(200).json({message:"logged In",user:{
      id: user._id,
     username: user.username,
