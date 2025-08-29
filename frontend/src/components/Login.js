@@ -11,7 +11,7 @@ const Login = () => {
     let handler = async(e)=>{
       e.preventDefault()
       try{
-          let req = await fetch("/user/Login",{method:"post",headers:{"Content-Type":"application/json"},body:JSON.stringify({username,password})})
+          let req = await fetch("https://to-do-list-backend-2jt1.onrender.com/user/Login",{method:"post",headers:{"Content-Type":"application/json"},body:JSON.stringify({username,password})})
 
           let data = await req.json()
           console.log(data)
