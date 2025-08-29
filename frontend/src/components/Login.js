@@ -14,7 +14,7 @@ const Login = ({url}) => {
           let req = await fetch(`${url}/user/Login`,{method:"post",headers:{"Content-Type":"application/json"},body:JSON.stringify({username,password})})
 
           let data = await req.json()
-          console.log(data)
+          
 
            if(req.ok){
              localStorage.setItem("token", data.token);
