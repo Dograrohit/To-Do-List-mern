@@ -96,7 +96,7 @@ router.post('/Login',
 
   res.cookie("token",token)
   
-  res.status(200).json({message:"logged In",user:{
+  res.status(200).json({message:"logged In",token,user:{
      id: user._id,
     username: user.username,
     email: user.email
