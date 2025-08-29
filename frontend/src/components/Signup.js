@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Signup = ({url}) => {
     let [username,setUsername] = useState("");
     let [email,setEmail] = useState("");
     let [password,setPassword] = useState("")
@@ -11,14 +11,14 @@ const Signup = () => {
      let handler = async(e)=>{
       e.preventDefault()
      try{
-      let req = await fetch("/user/signup",
+      let req = await fetch(`${url}/user/signup`,
         {method:"post",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({username,email,password})}
     )
       let res = await req.json()
       
       if(req.ok){
-        navigate("/Home",{state:{username}})
+        navigate(`/Home`,{state:{username}})
       }else{
         alert(res.message)
       }

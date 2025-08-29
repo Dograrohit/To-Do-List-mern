@@ -7,15 +7,16 @@ import Signup from "./components/Signup";
 
 function App() {
     
+  let url = "https://to-do-list-backend-2jt1.onrender.com"
 
   return (
     <>
     <Router>
       <Routes>
         <Route path="/" element={<Navigate to="/Signup"/>} />
-        <Route path="/Home" element={<Home/>} />
-        <Route path="/Login" element={<Login/>} />
-        <Route path="/Signup" element={<Signup/>} />
+        <Route path="/Home" element={<Home url={url}/>} />
+        <Route path="/Login" element={<Login url={url}/>} />
+        <Route path="/Signup" element={<Signup url={url}/>} />
       </Routes>
     </Router>
     </>
