@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../App.css';
-import { data, useLocation } from 'react-router-dom';
+import { data, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 
@@ -9,6 +9,7 @@ const location = useLocation()
 const {username} = location.state||{}
 const [text,setText] = useState("")
 const [note,setNote] = useState([])
+const navigate = useNavigate()
 
 //submit and list update
 
@@ -67,10 +68,16 @@ const fetchData = async () => {
   }
 
 useEffect(()=>{
+
+  const token = localStorage.getItem("token")
+
+  if (!token) {
+      navigate("/Login"); 
+    }
   
   fetchData()
     
-},[])
+},[navigate])
 
 
   return (

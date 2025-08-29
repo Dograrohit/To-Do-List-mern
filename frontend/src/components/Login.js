@@ -17,9 +17,10 @@ const Login = ({url}) => {
           console.log(data)
 
            if(req.ok){
+             localStorage.setItem("token", data.token);
              navigate("/Home",{state:{username}})
            }else{
-            alert(data.massage)
+            alert(data.massage||"login failed")
            }
       }catch(error){
             alert(error)

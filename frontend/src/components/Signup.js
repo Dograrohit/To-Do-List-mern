@@ -18,6 +18,7 @@ const Signup = ({url}) => {
       let res = await req.json()
       
       if(req.ok){
+        localStorage.setItem("token", res.token);
         navigate(`/Home`,{state:{username}})
       }else{
         alert(res.message)
