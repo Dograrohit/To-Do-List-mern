@@ -18,7 +18,7 @@ const token = localStorage.getItem("token")
 let submithandler = async(e)=>{
   e.preventDefault()
   try{
-        let req = await fetch(`${url}/Home`,{method:"post",headers:{"Content-type":"application/json"},credentials: "include",body:JSON.stringify({text})})
+        let req = await fetch(`${url}/Home`,{method:"post",headers:{"Content-type":"application/json", "Authorization": `Bearer ${token}`},credentials: "include",body:JSON.stringify({text})})
  
         if (req.status === 401) {
         localStorage.removeItem("token");
