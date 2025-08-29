@@ -11,10 +11,10 @@ const Login = ({url}) => {
     let handler = async(e)=>{
       e.preventDefault()
       try{
-          let req = await fetch(,{method:"post",headers:{"Content-Type":"application/json"},body:JSON.stringify({username,password})})
+          let req = await fetch(`${url}/user/Login`,{method:"post",headers:{"Content-Type":"application/json"},body:JSON.stringify({username,password})})
 
           let data = await req.json()
-          
+          console.log(data)
 
            if(req.ok){
              navigate("/Home",{state:{username}})

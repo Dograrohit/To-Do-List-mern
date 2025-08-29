@@ -15,7 +15,7 @@ const [note,setNote] = useState([])
 let submithandler = async(e)=>{
   e.preventDefault()
   try{
-        let req = await fetch("/Home",{method:"post",headers:{"Content-type":"application/json"},body:JSON.stringify({text})})
+        let req = await fetch(`${url}/Home`,{method:"post",headers:{"Content-type":"application/json"},body:JSON.stringify({text})})
         setText("")
         fetchData()
   }catch(error){
@@ -27,7 +27,7 @@ let submithandler = async(e)=>{
 
 let toggle = async(id,newcheck,idx)=>{
   try{
-  let req = await fetch(`/Home/${id}`,{method:"PUT",headers:{"Content-Type":"application/json"},
+  let req = await fetch(`${url}/Home/${id}`,{method:"PUT",headers:{"Content-Type":"application/json"},
   body:JSON.stringify({id,check:newcheck})
 })
 
@@ -43,7 +43,7 @@ setNote(update)
 
 const fetchData = async () => {
     try {
-      let res = await fetch("/Home");
+      let res = await fetch(`${url}/Home`);
       let data = await res.json();
        setNote(data.list)
     } catch (error) {
@@ -55,7 +55,7 @@ const fetchData = async () => {
 
   const deletenote = async(id)=>{
       try{
-        let req = await fetch(`/Home/${id}`, {
+        let req = await fetch(`${url}/Home/${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" }
     });
