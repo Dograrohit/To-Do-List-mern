@@ -11,12 +11,21 @@ const [text,setText] = useState("")
 const [note,setNote] = useState([])
 const navigate = useNavigate()
 
+const token = localStorage.getItem("token")
+
 //submit and list update
 
 let submithandler = async(e)=>{
   e.preventDefault()
   try{
         let req = await fetch(`${url}/Home`,{method:"post",headers:{"Content-type":"application/json"},body:JSON.stringify({text})})
+ 
+        if (req.status === 401) {
+        localStorage.removeItem("token");
+        navigate("/Login");
+        return;
+      }
+
         setText("")
         fetchData()
   }catch(error){
@@ -28,9 +37,15 @@ let submithandler = async(e)=>{
 
 let toggle = async(id,newcheck,idx)=>{
   try{
-  let req = await fetch(`${url}/Home/${id}`,{method:"PUT",headers:{"Content-Type":"application/json"},
+  let req = await fetch(`${url}/Home/${id}`,{method:"PUT",headers:{"Content-Type":"application/json", "Authorization": `Bearer ${token}`},
   body:JSON.stringify({id,check:newcheck})
 })
+
+if (req.status === 401) {
+        localStorage.removeItem("token");
+        navigate("/Login");
+        return;
+      }
 
 const update = [...note]
 update[idx].check = newcheck;
@@ -44,9 +59,16 @@ setNote(update)
 
 const fetchData = async () => {
     try {
-      let res = await fetch(`${url}/Home`);
+      let res = await fetch(`${url}/Home`,{headers:{ "Authorization": `Bearer ${token}`}});
+ 
+      if (res.status === 401) {
+        localStorage.removeItem("token");
+        navigate("/Login");
+        return;
+      }
+
       let data = await res.json();
-       setNote(data.list)
+       setNote(data.list || [])
     } catch (error) {
       console.error("Fetch failed:", error);
     }
@@ -58,8 +80,15 @@ const fetchData = async () => {
       try{
         let req = await fetch(`${url}/Home/${id}`, {
       method: "DELETE",
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json","Authorization": `Bearer ${token}` }
     });
+
+    if (req.status === 401) {
+        localStorage.removeItem("token");
+        navigate("/Login");
+        return;
+      }
+
       fetchData()
         
       }catch(error){
@@ -69,15 +98,13 @@ const fetchData = async () => {
 
 useEffect(()=>{
 
-  const token = localStorage.getItem("token")
-
   if (!token) {
       navigate("/Login"); 
     }
   
   fetchData()
     
-},[navigate])
+},[navigate,token])
 
 
   return (
@@ -94,19 +121,29 @@ useEffect(()=>{
 
       <main>
 
-         {note.map((value,i)=>(
-               <div key={value._id} className='list' >
-            <label className='checkbox'>
-              <input type='checkbox' checked={value.check}
-        onChange={() => toggle(value._id,!value.check,i)}></input>
-              <span className='checkmark'></span>
+        {note.length > 0 ? (
+          note.map((value, i) => (
+            <div key={value._id} className='list'>
+              <label className='checkbox'>
+                <input
+                  type='checkbox'
+                  checked={value.check}
+                  onChange={() => toggle(value._id, !value.check, i)}
+                />
+                <span className='checkmark'></span>
               </label>
 
-             <div className='note'>{value.massage}</div>
+              <div className='note'>{value.massage}</div>
 
-             <span className='delete' onClick={()=>deletenote(value._id)}><FontAwesomeIcon icon={faTrashCan} /></span>
-          </div>
-         ))}
+              <span className='delete' onClick={() => deletenote(value._id)}>
+                <FontAwesomeIcon icon={faTrashCan} />
+              </span>
+            </div>
+          ))
+        ) : (
+          <p>No notes found</p>
+        )}
+         
 
       </main>
     </>
