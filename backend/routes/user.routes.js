@@ -44,7 +44,14 @@ router.post('/signup',
 
       res.cookie("token",token)
 
-      res.status(200).json({message:"Signup successful",token})
+      res.status(200).json({message:"Signup successful",token,
+        user: {
+      id: newuser._id,
+      username: newuser.username,
+      email: newuser.email
+    }
+      })
+      
     } catch (err) {
       console.error("Signup error:", err);
       res.status(500).json({ message: "Server error", error: err.message });
