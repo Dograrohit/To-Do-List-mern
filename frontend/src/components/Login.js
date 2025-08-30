@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Login = ({url}) => {
 
@@ -31,11 +31,19 @@ const Login = ({url}) => {
     <>
       <div className='login'>
           <div className='main'>
+             <div className='welcome'>
+              <h1>Welcome <br></br> to</h1>
+              <img src='/favicon.ico'></img>
+            </div>
               <form onSubmit={(e)=>{handler(e)}}>
                  <input value={username} onChange={(e)=>setUsername(e.target.value)} type='text' placeholder='Username'></input>
                  <input value={password} onChange={(e)=>{setPassword(e.target.value)}} type='password' placeholder='Password'></input>
                  <button>Login</button>
               </form>
+              <div className='signup-page'>
+                      <p>If you did't have an Account</p>
+                      <Link className='link' to="/Signup">Signup</Link>
+              </div>
           </div>
       </div>
     </>

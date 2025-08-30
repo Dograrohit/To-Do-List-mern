@@ -55,6 +55,106 @@ nav form button:hover{
     background-color: green ;
     color: white;
 }
+.Signup{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.login{
+    width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.main{
+ width: 28%;
+ height: 80%;
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+}
+.main form{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10%;
+}
+.main form input{
+    width: 70%;
+    padding: 3% 8%;
+    border-radius:10px;
+    border: 2px solid;
+}
+.main form input:hover{
+    border: 2px solid rgb(39, 141, 209);
+}
+.main form input:focus{
+    border:2px solid rgb(39, 141, 209) ;
+}
+.main form button{
+    width: 40%;
+    height: 15%;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(39, 141, 209);
+    color: white;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.main form button:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid;
+}
+.main .welcome{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+}
+
+.main .welcome img{
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+}
+.main .Login-page{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.main .Login-page .link{
+    text-decoration: none;
+    color: rgb(39, 141, 209);
+}
+.main .signup-page{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.main .signup-page .link{
+    text-decoration: none;
+    color: rgb(39, 141, 209);
+}
 main{
     width: 100%;
     height: auto;

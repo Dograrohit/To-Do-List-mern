@@ -33,15 +33,21 @@ const Signup = ({url}) => {
     <>
       <div className='Signup'>    
           <div className='main'>
+
+            <div className='welcome'>
+              <h1>Welcome <br></br> to</h1>
+              <img src='/favicon.ico'></img>
+            </div>
+
               <form onSubmit={(e)=>{handler(e)}}>
                  <input type='text' value={username} onChange={(e)=>setUsername(e.target.value)} placeholder='Username'></input>
                  <input type='email' value={email} onChange={(e)=>setEmail(e.target.value)} placeholder='E-mail'></input>
                  <input type='password' value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='Password'></input>
                  <button>Signup</button>
               </form>
-              <div className='Login'>
+              <div className='Login-page'>
                       <p>If you already have account</p>
-                      <Link to='/Login'>Login</Link>
+                      <Link className='link' to='/Login'>Login</Link>
               </div>
           </div>
       </div>
