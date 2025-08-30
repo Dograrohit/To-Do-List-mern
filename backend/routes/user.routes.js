@@ -44,7 +44,6 @@ router.post('/signup',
 
       res.cookie("token",token)
 
-      res.json(newuser);
       res.status(200).json({message:"Signup successful",token,user:{
      id: user._id,
     username: user.username,
