@@ -111,7 +111,7 @@ useEffect(()=>{
     <>
       <nav>
           <div className='logo'><img src='mylogo.png'></img></div>
-          <div className='name'><h1>Mukul anand</h1></div>
+          <div className='name'><h1>{username.UpperCase()}</h1></div>
 
           <form onSubmit={(e)=>{submithandler(e)}}>
               <input value={text} onChange={(e)=>setText(e.target.value)} type='text' placeholder='Add Your List'></input>
