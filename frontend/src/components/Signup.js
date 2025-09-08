@@ -11,7 +11,7 @@ const Signup = ({url}) => {
      let handler = async(e)=>{
       e.preventDefault()
      try{
-      let req = await fetch(`${url}/#/user/signup`,
+      let req = await fetch(`${url}/user/signup`,
         {method:"post",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({username,email,password})}
     )
