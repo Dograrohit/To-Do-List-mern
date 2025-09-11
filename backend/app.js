@@ -13,8 +13,9 @@ const cookie = require("cookie-parser")
 const app = express()
 const PORT = process.env.PORT || 5000
 
+
 app.use(cors({
-  origin: "https://to-do-list-frontend-cv25.onrender.com", 
+  origin: "https://to-do-list-frontend-cv25.onrender.com"  , 
   credentials: true
 }))
 app.use(cookie())

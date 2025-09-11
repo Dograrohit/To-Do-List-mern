@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../App.css';
+import '../index.css';
 import { data, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
@@ -120,6 +121,13 @@ useEffect(()=>{
       </nav>
 
       <main>
+
+        <div id='addnote'>
+            <form onSubmit={(e)=>{submithandler(e)}}>
+              <input value={text} onChange={(e)=>setText(e.target.value)} type='text' placeholder='Add Your List'></input>
+              <button>ADD</button>
+          </form>
+        </div>
 
         {note.length > 0 ? (
           note.map((value, i) => (

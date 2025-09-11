@@ -2,11 +2,12 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Home from "./components/Home";
 import Login from "./components/Login";
 import './App.css';
+import './index.css'
 import Signup from "./components/Signup";
 
 
 function App() {
-    
+     
   let url = "https://to-do-list-backend-2jt1.onrender.com"
 
   return (
