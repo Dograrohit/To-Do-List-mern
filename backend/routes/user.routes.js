@@ -99,7 +99,7 @@ router.post('/Login',
     Userid:user._id,
     email:user.email,
     username:user.username
-   },process.env.JWT_SECRET)
+   },process.env.JWT_SECRET,{expiresIn:"2d"})
 
   res.cookie("token",token)
   
