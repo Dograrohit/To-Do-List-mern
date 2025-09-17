@@ -40,7 +40,7 @@ router.post('/signup',
         Userid:newuser._id,
          email:newuser.email,
          username:newuser.username
-      },process.env.JWT_SECRET)   
+      },process.env.JWT_SECRET,{expiresIn:"2d"})   
 
       res.cookie("token",token)
 
